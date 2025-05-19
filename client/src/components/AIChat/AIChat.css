@@ -1,0 +1,247 @@
+/* AIChat.css */
+
+/* Typing Indicator Animation */
+.typing-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .typing-indicator span {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    margin: 0 2px;
+    background-color: #6366f1;
+    border-radius: 50%;
+    opacity: 0.6;
+    animation: typing 1.4s infinite ease-in-out both;
+  }
+  
+  .typing-indicator span:nth-child(1) {
+    animation-delay: -0.32s;
+  }
+  
+  .typing-indicator span:nth-child(2) {
+    animation-delay: -0.16s;
+  }
+  
+  @keyframes typing {
+    0%, 80%, 100% {
+      transform: scale(0.6);
+    }
+    40% {
+      transform: scale(1);
+    }
+  }
+  
+  /* Scroll styling */
+  .messages-container::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .messages-container::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .messages-container::-webkit-scrollbar-thumb {
+    background-color: rgba(99, 102, 241, 0.2);
+    border-radius: 20px;
+  }
+  
+  .messages-container::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(99, 102, 241, 0.4);
+  }
+  
+  /* Message animations */
+  .message {
+    animation: message-fade-in 0.3s ease-out;
+  }
+  
+  @keyframes message-fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Recording pulse animation */
+  button.text-red-500 {
+    position: relative;
+  }
+  
+  button.text-red-500::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: rgba(239, 68, 68, 0.2);
+    animation: pulse 2s infinite;
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(0.95);
+      opacity: 0.7;
+    }
+    70% {
+      transform: scale(1.1);
+      opacity: 0.2;
+    }
+    100% {
+      transform: scale(0.95);
+      opacity: 0.7;
+    }
+  }
+  
+  /* Message bubble styling */
+  .message.user > div {
+    box-shadow: 0 1px 2px rgba(31, 41, 55, 0.1);
+  }
+  
+  .message.bot > div {
+    box-shadow: 0 1px 3px rgba(31, 41, 55, 0.1);
+  }
+  
+  /* Note panel transition */
+  .notes-panel {
+    transition: width 0.3s ease-in-out;
+  }
+  
+  /* Mobile responsiveness */
+  @media (max-width: 640px) {
+    .notes-panel {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      z-index: 10;
+      height: 100%;
+    }
+    
+    .chat-header {
+      padding: 0.75rem;
+    }
+    
+    .chat-header h1 {
+      font-size: 1rem;
+    }
+    
+    .chat-input-container {
+      padding: 0.75rem;
+    }
+  }
+  
+  /* Code block styling */
+  .message.bot pre {
+    background-color: #f8f9fa;
+    border-radius: 0.375rem;
+    padding: 0.75rem;
+    margin: 0.5rem 0;
+    overflow-x: auto;
+    font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    border-left: 3px solid #6366f1;
+  }
+  
+  .message.bot code {
+    background-color: #f1f1f4;
+    padding: 0.125rem 0.25rem;
+    border-radius: 0.25rem;
+    font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
+    font-size: 0.875em;
+  }
+  
+  /* Markdown styling */
+  .message.bot ul, .message.bot ol {
+    padding-left: 1.5rem;
+    margin: 0.5rem 0;
+  }
+  
+  .message.bot ul li {
+    list-style-type: disc;
+  }
+  
+  .message.bot ol li {
+    list-style-type: decimal;
+  }
+  
+  .message.bot a {
+    color: #4f46e5;
+    text-decoration: underline;
+  }
+  
+  .message.bot h1, .message.bot h2, .message.bot h3, .message.bot h4 {
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+  }
+  
+  .message.bot h1 {
+    font-size: 1.25rem;
+  }
+  
+  .message.bot h2 {
+    font-size: 1.15rem;
+  }
+  
+  .message.bot h3 {
+    font-size: 1.05rem;
+  }
+  
+  .message.bot h4 {
+    font-size: 1rem;
+  }
+  
+  /* Table styling */
+  .message.bot table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 0.75rem 0;
+  }
+  
+  .message.bot th, .message.bot td {
+    border: 1px solid #e5e7eb;
+    padding: 0.5rem;
+    text-align: left;
+  }
+  
+  .message.bot th {
+    background-color: #f3f4f6;
+    font-weight: 600;
+  }
+  
+  /* Blockquote styling */
+  .message.bot blockquote {
+    border-left: 4px solid #6366f1;
+    padding: 0.5rem 1rem;
+    background-color: #f9fafb;
+    margin: 0.75rem 0;
+    font-style: italic;
+    color: #4b5563;
+  }
+  
+  /* File upload button and input */
+  .file-upload-animation {
+    transition: transform 0.2s ease;
+  }
+  
+  .file-upload-animation:active {
+    transform: scale(0.95);
+  }
+  
+  /* Send button animation */
+  button.bg-gradient-to-r:active {
+    transform: scale(0.95);
+  }
+  
+  /* Focus styles */
+  textarea:focus {
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.3);
+  }
