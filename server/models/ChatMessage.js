@@ -6,9 +6,9 @@ const chatMessageSchema = new mongoose.Schema({
         ref: 'User',
         required: true
     },
-    type: {
+    role: {
         type: String,
-        enum: ['user', 'ai'],
+        enum: ['user', 'assistant'],
         required: true
     },
     content: {
@@ -19,10 +19,6 @@ const chatMessageSchema = new mongoose.Schema({
         fileName: String,
         fileUrl: String,
         extractedText: String
-    },
-    contextData: {
-        type: Map,
-        of: String
     },
     timestamp: {
         type: Date,
